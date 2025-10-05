@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exe - 8</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            background-color: blue;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            animation: bgcolor 1s ease-out infinite alternate;
+        }
+
+        .box{
+            background-color: red;
+            height: 121px;
+            width: 121px;
+            border-radius: 70px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            animation: AnimateX 3s linear infinite, AnimateY 1s ease-out infinite alternate;
+        }
+
+        @keyframes AnimateX
+        {
+            from{
+                left: 0%;
+            }
+
+            to{
+                left: 100%;
+            }
+        }
+
+        @keyframes AnimateY
+        {
+
+            0%{
+                bottom: 0%;
+                background-color: yellow;
+            }
+
+            50%{
+                background-color: red;
+            }
+
+            100%{
+                background-color: green;
+                bottom: 100%;
+            }
+            
+        }
+
+    @keyframes bgcolor{
+        0%{
+            background-color: pink;
+        }
+
+        50%{
+            background-color: rgb(236, 138, 68);
+        }
+
+        100%{
+            background-color: rgb(102, 109, 237);
+        }
+    }
+    </style>
+</head> 
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
