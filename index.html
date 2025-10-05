@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RJ's Portfolio</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html { 
+      font-size: 62.5%; 
+      scroll-behavior: smooth; 
+    }
+    body { 
+      background: #000; 
+      color: #e0f7fa; 
+      overflow-x: hidden; 
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 1rem 9%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: #161616;
+      border-bottom: 2px solid #b74b4b;
+    }
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #b74b4b;
+    }
+
+    #menu-toggle { 
+      display: none; 
+    }
+    .menu-icon {
+      display: none;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      font-size: 1.6rem;
+      color: white;
+      transition: 0.3s;
+    }
+    nav a:hover, nav a.active {
+      color: #b74b4b;
+      border-bottom: 2px solid #b74b4b;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 7rem 9% 5rem;
+    }
+    .home {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6rem;
+    }
+    .pfp img {
+      width: 32vw;
+      border-radius: 50%;
+      box-shadow: 0 0 25px #b74b4b;
+      transition: transform 0.3s;
+    }
+    .pfp img:hover { 
+      transform: scale(1.05); 
+    }
+
+    .homeIntro h1 {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.homeIntro h3 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.homeIntro p {
+  font-size: 1.8rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #e0f7fa;
+}
+
+
+.homeIntro h1 { 
+  font-size: 6rem; 
+  font-weight: 700;
+}
+.homeIntro h3 { 
+  font-size: 3rem;
+  margin: 1rem 0; 
+}
+span { 
+  color: #b74b4b; 
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: #b74b4b;
+  border: 2px solid #b74b4b;
+  border-radius: 3rem;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #b74b4b;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #b74b4b;
+}
+
+.projects h3,
+#qual h3,
+.contact h3 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.projects .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: #161616;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(183, 75, 75, 0.4);
+}
+
+.card h4 {
+  font-size: 2rem;
+  color: #ff6f61;
+  margin-bottom: 1rem;
+  transition: 0.3s;
+}
+.card h4:hover {
+  color: #ff3b2f;
+}
+
+.card a.view-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000;
+  background: #ff6f61;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.card a.view-btn:hover {
+  background: #ff3b2f;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff6f61;
+}
+
+
+#qual {
+  padding: 7rem 9% 5rem;
+}
+
+#qual h3 {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #b74b4b;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.timeline-icon {
+  background: #161616;
+  color: #b74b4b;
+  border: 2px solid #b74b4b;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-content {
+  background: #161616;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(183, 75, 75, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.timeline-content h4 {
+  font-size: 2rem;
+  color: #ff6f61;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+  color: #e0f7fa;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px #b74b4b;
+}
+
+.contact {
+  padding: 7rem 9% 5rem;
+}
+
+.contact h3 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: auto;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.contact-form {
+  flex: 1 1 400px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #b74b4b;
+  border-radius: 0.8rem;
+  background: #161616;
+  color: #e0f7fa;
+  font-size: 1.5rem;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #b74b4b;
+}
+
+.contact-form button.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.6rem;
+  border-radius: 3rem;
+  border: 2px solid #b74b4b;
+  color: #b74b4b;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button.btn:hover {
+  background: #b74b4b;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #b74b4b;
+}
+
+.socials {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.socials a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem; height: 4rem;
+  border: 2px solid #b74b4b;
+  border-radius: 50%;
+  color: #b74b4b;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  background: #b74b4b;
+  color: #000;
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #b74b4b;
+}
+
+
+
+.homeBio span { 
+  position: relative; 
+}
+.homeBio span::before {
+  content: "Frontend Developer";
+  color: #b74b4b;
+  animation: words 20s infinite;
+}
+.homeBio span::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: #b74b4b;
+  animation: blink 0.8s steps(2, start) infinite;
+  right: -5px; top: 0;
+}
+@media (max-width: 900px) {
+  .homeIntro h1 {
+    font-size: 4rem; 
+  }
+  .homeIntro h3 { 
+    font-size: 2.2rem;
+  }
+  .homeIntro p { 
+    font-size: 1.6rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  .homeIntro h1 {
+    font-size: 3.2rem; 
+  }
+  .homeIntro h3 { 
+    font-size: 1.8rem; 
+  }
+  .homeIntro p { 
+    font-size: 1.5rem; 
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline::before { 
+    left: 20px; 
+  }
+  .timeline-item { 
+    flex-direction: column; 
+    gap: 1rem; 
+  }
+  .timeline-icon { 
+    width: 50px; 
+    height: 50px;
+    font-size: 1.8rem;
+  }
+  .timeline-content { 
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 3rem; 
+  }
+  .socials { 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 1.5rem; 
+  }
+}
+@keyframes blink { 
+  50% {
+    opacity: 0; 
+  } 
+}
+@keyframes words {
+  0%, 20% {
+    content: "Frontend Developer"; 
+  }
+  21%, 40% { 
+    content: "Web Designer";
+  }
+  41%, 60% { 
+    content: "Problem Solver"; 
+  }
+  61%, 80% {
+    content: "Coder"; 
+  }
+  81%, 100% { 
+    content: "Learner"; 
+  }
+}
+
+@media (max-width: 900px) {
+  .home { 
+    flex-direction: column; 
+    text-align: center; 
+  }
+  .pfp img {
+    width: 60vw; 
+  }
+}
+@media (max-width: 768px) {
+  .menu-icon { 
+    display: block;
+  }
+  nav {
+    position: absolute;
+    top: 100%; right: 0;
+    background: #161616;
+    flex-direction: column;
+    width: 200px;
+    border-left: 2px solid #b74b4b;
+    padding: 1rem;
+        display: none;
+      }
+      #menu-toggle:checked + .menu-icon + nav {
+        display: flex;
+      }
+      nav a {
+        padding: 1rem; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">RJ's Portfolio</a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#qual">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="home">
+    <div class="pfp">
+      <img src="https://img.freepik.com/premium-photo/portrait-successful-programmer-game-developer-coder-guy-uses-computer-laptop-work-game-design-hacker-boy-generative-ai-gamer-headphones_117038-7598.jpg?w=740" alt="RJ - Developer">
+    </div>
+    <div class="homeIntro">
+      <h1>Hello 👋, I'm <span>RJ</span></h1>
+      <h3 class="homeBio">I'm a <span></span></h3>
+      <p>I am an aspiring web developer with a strong foundation in HTML, CSS, and a Learner in JavaScript. I have a keen interest in building responsive, accessible, and user-friendly websites. My goal is to continuously enhance my technical expertise and contribute to developing innovative digital solutions.</p>
+      <a href="#contact" class="btn">Connect with Me</a>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h3>Projects</h3>
+    <div class="grid">
+      <div class="card">
+        <a href="project1.html"><h4>Profile Card</h4></a>
+        <p>This project demonstrates a simple CSS card design using HTML and internal CSS. The card includes an image, category tags, descriptive text, and a styled button. It showcases the use of modern fonts, hover effects, and a clean layout to create an interactive and visually appealing component.</p>
+        <a href="project1.html" class="view-btn"><h1>View Project</h1></a>
+      </div>
+      <div class="card">
+        <a href="project2.html"><h4>Bouncing Ball Animation with BG Transition</h4></a>
+        <p>This project uses HTML and CSS animations to create a bouncing ball effect with dynamic color transitions. The ball moves horizontally and vertically while changing colors, and the background smoothly shifts between multiple shades, showcasing the use of CSS keyframes and animation properties.</p>
+        <a href="project2.html" class="view-btn"><h1>View Project</h1></a>
+      </div>
+      <div class="card">
+        <a href="project3.html"><h4>Solar System Animation with Pure HTML & CSS</h4></a>
+        <p>This project visually represents the solar system using only HTML and CSS. The sun and planets are styled with gradients, orbit paths, and smooth keyframe animations to simulate planetary motion. It demonstrates the use of CSS variables, transformations, and animations to create an engaging space-themed visualization.</p>
+        <a href="project3.html" class="view-btn"><h1>View Project</h1></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="qual">
+  <h3>Qualification</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <i class="fa fa-graduation-cap"></i>
+      </div>
+      <div class="timeline-content">
+        <h4>Scaler School Of Technology</h4>
+        <p class="duration"><em>2025 - 2029</em></p>
+        <p>Focused on enhancing programming skills, learning modern web technologies, and building practical projects for real-world applications.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-icon">
+        <i class="fa fa-university"></i>
+      </div>
+      <div class="timeline-content">
+        <h4>BITS Pilani – BSc. Computer Science</h4>
+        <p class="duration"><em>2025 - 2029</em></p>
+        <p>Gaining a strong foundation in computer science fundamentals, data structures, algorithms, and software development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="contact" id="contact">
+  <h3>Connect with Me</h3>
+  <p style="text-align:center; font-size:1.6rem; margin-bottom:2rem;">Feel free to reach out for collaborations, projects, or just to say hello!</p>
+
+  <div class="contact-container">
+    <div class="contact-form">
+      <form action="mailto:ridhamprajapati654321@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/w3bxrj/" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/w3bxrj" aria-label="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://twitter.com/" aria-label="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://instagram.com/w3bxrj" aria-label="Instagram"><i class="fa fa-instagram"></i></a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+
